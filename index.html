@@ -1,0 +1,206 @@
+<!-- Hi! This is MAhmad  -->
+<!-- LoginFrom Using Html Css js -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Multi Step Login Form | MAhmad </title>
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="container">
+         <header>Signup Form</header>
+         <div class="progress-bar">
+            <div class="step">
+               <p>
+                  Name
+               </p>
+               <div class="bullet">
+                  <span>1</span>
+               </div>
+               <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+               <p>
+                  Contact
+               </p>
+               <div class="bullet">
+                  <span>2</span>
+               </div>
+               <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+               <p>
+                  Birth
+               </p>
+               <div class="bullet">
+                  <span>3</span>
+               </div>
+               <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+               <p>
+                  Submit
+               </p>
+               <div class="bullet">
+                  <span>4</span>
+               </div>
+               <div class="check fas fa-check"></div>
+            </div>
+         </div>
+         <div class="form-outer">
+            <form action="#">
+               <div class="page slide-page">
+                  <div class="title">
+                     Basic Info:
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        First Name
+                     </div>
+                     <input type="text">
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Last Name
+                     </div>
+                     <input type="text">
+                  </div>
+                  <div class="field">
+                     <button class="firstNext next">Next</button>
+                  </div>
+               </div>
+               <div class="page">
+                  <div class="title">
+                     Contact Info:
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Email Address
+                     </div>
+                     <input type="text">
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Phone Number
+                     </div>
+                     <input type="Number">
+                  </div>
+                  <div class="field btns">
+                     <button class="prev-1 prev">Previous</button>
+                     <button class="next-1 next">Next</button>
+                  </div>
+               </div>
+               <div class="page">
+                  <div class="title">
+                     Date of Birth:
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Date
+                     </div>
+                     <input type="text">
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Gender
+                     </div>
+                     <select>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                     </select>
+                  </div>
+                  <div class="field btns">
+                     <button class="prev-2 prev">Previous</button>
+                     <button class="next-2 next">Next</button>
+                  </div>
+               </div>
+               <div class="page">
+                  <div class="title">
+                     Login Details:
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Username
+                     </div>
+                     <input type="text">
+                  </div>
+                  <div class="field">
+                     <div class="label">
+                        Password
+                     </div>
+                     <input type="password">
+                  </div>
+                  <div class="field btns">
+                     <button class="prev-3 prev">Previous</button>
+                     <button class="submit">Submit</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+   const form = document.querySelector('form');
+   const sections = document.querySelectorAll('.page');
+   const progressBar = document.querySelector('.progress-bar');
+   const bulletPoints = document.querySelectorAll('.bullet');
+   let currentSection = 0;
+
+   // Function to update progress bar
+   function updateProgressBar(currentSection) {
+      bulletPoints.forEach((bullet, index) => {
+         if (index < currentSection) {
+            bullet.classList.add('active');
+         } else {
+            bullet.classList.remove('active');
+         }
+      });
+   }
+   function showSection(currentSection) {
+      sections.forEach((section, index) => {
+         if (index === currentSection) {
+            section.style.display = 'block';
+         } else {
+            section.style.display = 'none';
+         }
+      });
+   }
+   function handleNextClick() {
+      if (currentSection < sections.length - 1) {
+         currentSection++;
+         showSection(currentSection);
+         updateProgressBar(currentSection);
+      }
+   }
+   function handlePrevClick() {
+      if (currentSection > 0) {
+         currentSection--;
+         showSection(currentSection);
+         updateProgressBar(currentSection);
+      }
+   }
+   const nextButtons = document.querySelectorAll('.next');
+   nextButtons.forEach(button => {
+      button.addEventListener('click', handleNextClick);
+   });
+
+   const prevButtons = document.querySelectorAll('.prev');
+   prevButtons.forEach(button => {
+      button.addEventListener('click', handlePrevClick);
+   });
+   form.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+      console.log('Form submitted successfully!');
+   });
+   showSection(currentSection);
+   updateProgressBar(currentSection);
+});
+
+      </script>
+   </body>
+</html>
